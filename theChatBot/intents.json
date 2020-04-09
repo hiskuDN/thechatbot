@@ -78,18 +78,65 @@
         "What support is offered"
       ],
       "responses": [
-        "I can guide you through Adverse drug reaction list, Blood pressure tracking, Hospitals and Pharmacies",
-        "Offering support for Adverse drug reaction, Blood pressure, Hospitals and Pharmacies"
+        "I can provide you with a github library of your need",
+        "Give you a specific "
       ],
       "context": [
         ""
       ]
     },
     {
-      "tag": "",
-      "patterns": "",
-      "responses": "",
-      "context": ""
+      "tag": "lib_search_react",
+      "patterns": [
+        "I need a flip countdown timer plugin in React with customizable buttons",
+        "Give me a chart ui library in react"
+      ],
+      "responses": [
+        ""
+      ],
+      "context": [
+        ""
+      ]
+    },
+    {
+      "tag": "lib_search_angular",
+      "patterns": [
+        "I need a flip countdown timer plugin in Angular with customizable buttons",
+        "Give me a chart ui library in angular"
+      ],
+      "responses": [
+        ""
+      ],
+      "context": [
+        ""
+      ]
+    },
+    {
+      "tag": "lib_search_ionic",
+      "patterns": [
+        "I need a flip countdown timer plugin in ionic with customizable buttons",
+        "Give me a chart ui library in ionic"
+      ],
+      "responses": [
+        ""
+      ],
+      "context": [
+        ""
+      ]
+    },
+    {
+      "tag": [
+        ""
+      ],
+      "patterns": [
+        ""
+      ],
+      "responses": [
+        ""
+      ],
+      "context": [
+        ""
+      ]
     }
   ]
 }

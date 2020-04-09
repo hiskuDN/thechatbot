@@ -8,8 +8,11 @@ __Suggestion Here: In our case, since we have a different dataset from the inten
 
 * *intents.json* is also used to generate responses based on the generated classificatoin from our model
 
-* Use *botTraining.py* to train the model from *intents.json*
+* Use *bot_training.py* to train the model from *intents.json*
 
 * The model we generate will classify what the user's intents are and responds with a unique "tag" that just like defined inside the intents file
 
 * After our model classifies the user input into one of the intent tags, we iterate through the json file to find a response.
+
+
+NOTE: The jupyter notebooks are the one's that I'll update, you can use whichever you prefer although I'd suggest you using jupyter, makes things simple ;)
