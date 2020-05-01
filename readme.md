@@ -12,7 +12,17 @@ __Suggestion Here: In our case, since we have a different dataset from the inten
 
 * The model we generate will classify what the user's intents are and responds with a unique "tag" that just like defined inside the intents file
 
-* After our model classifies the user input into one of the intent tags, we iterate through the json file to find a response.
-
+* After our model classifies the user input into one of the intent tags, we iterate through the json file to find a response. 
 
 NOTE: The jupyter notebooks are the one's that I'll update, you can use whichever you prefer although I'd suggest you using jupyter, makes things simple ;)
+
+##  Next Steps
+
+### TODO
+* Identify the different types of intents => Is the user looking for a library [Manually Entered into intents.json] -> What type of library the user is looking for [From Description] -> In what language should the library be [Entities]
+
+* Extract Dataset from CSV to train the model -> intents.json (using pandas)
+
+* Add the data to a postgres db for quering
+
+* Learn NLP and Machine Learning using tensorflow and ntlk
