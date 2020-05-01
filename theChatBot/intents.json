@@ -86,7 +86,7 @@
       ]
     },
     {
-      "tag": "lib_search_react",
+      "tag": "countdown_timer",
       "patterns": [
         "I need a flip countdown timer plugin in React with customizable buttons",
         "Give me a chart ui library in react"
@@ -99,10 +99,10 @@
       ]
     },
     {
-      "tag": "lib_search_angular",
+      "tag": "datepicker",
       "patterns": [
-        "I need a flip countdown timer plugin in Angular with customizable buttons",
-        "Give me a chart ui library in angular"
+        "I need to find a datepicker library.",
+        "Datepicker library"
       ],
       "responses": [
         ""
@@ -114,8 +114,8 @@
     {
       "tag": "lib_search_ionic",
       "patterns": [
-        "I need a flip countdown timer plugin in ionic with customizable buttons",
-        "Give me a chart ui library in ionic"
+        "I need a flip countdown timer plugin with customizable buttons",
+        "Give me a chart ui library"
       ],
       "responses": [
         ""

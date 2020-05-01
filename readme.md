@@ -2,11 +2,11 @@
 
 ## Notes on the Project
 
-* *intents.json* should contain training data to create the model. It should be split into two classes which are the training data and the test data.
+* *intents.json* & *entities.json* should contain training data to create the model. It should be split into two classes which are the training data and the test data.
 
 __Suggestion Here: In our case, since we have a different dataset from the intent.json, we may need to import and convert the dataset to a type that we want to__
 
-* *intents.json* is also used to generate responses based on the generated classificatoin from our model
+* *intents.json* & *entities.json* is also used to generate responses based on the generated classificatoin from our model
 
 * Use *bot_training.py* to train the model from *intents.json*
 

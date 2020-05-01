@@ -1,1 +1,0 @@
-# import the github dataset and fill data into the intents.json file
