@@ -1,0 +1,88 @@
+{
+  "entities": [
+    {
+      "value": "python",
+      "synonyms": [
+        "py",
+        "python"
+      ]
+    },
+    {
+      "value": "c++",
+      "synonyms": [
+        "cpp",
+        "c++"
+      ]
+    },
+    {
+      "value": "c#",
+      "synonyms": [
+        "csharp",
+        "c#"
+      ]
+    },
+    {
+      "value": "java",
+      "synonyms": [
+        "java"
+      ]
+    },
+    {
+      "value": "typescript",
+      "synonyms": [
+        "ts",
+        "typescript"
+      ]
+    },
+    {
+      "value": "shell",
+      "synonyms": [
+        "shell"
+      ]
+    },
+    {
+      "value": "c",
+      "synonyms": [
+        "c"
+      ]
+    },
+    {
+      "value": "ruby",
+      "synonyms": [
+        "ruby"
+      ]
+    },
+    {
+      "value": "php",
+      "synonyms": [
+        "php"
+      ]
+    },
+    {
+      "value": "javascript",
+      "synonyms": [
+        "js",
+        "javascript"
+      ]
+    },
+    {
+      "value": "css",
+      "synonyms": [
+        "stlyesheet",
+        "css"
+      ]
+    },
+    {
+      "value": "go",
+      "synonyms": [
+        "go"
+      ]
+    },
+    {
+      "value": "swift",
+      "synonyms": [
+        "swift"
+      ]
+    }
+  ]
+}
