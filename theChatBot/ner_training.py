@@ -10,6 +10,7 @@ import numpy as np
 import spacy
 import random
 from spacy.util import minibatch, compounding
+from pathlib import Path
 
 gpu = spacy.prefer_gpu()
 print('GPU:', gpu)
@@ -67,6 +68,7 @@ with nlp.disable_pipes(*other_pipes):  # only train NER
 # save model to output directory
 output_dir = 'enter_the_output_file_path_here'
 if output_dir is not None:
+    output_dir = Path(output_dir)
     if not output_dir.exists():
         output_dir.mkdir()
     nlp.to_disk(output_dir)
