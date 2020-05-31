@@ -97,7 +97,19 @@
       "tag": "lib_search",
       "patterns": [
         "I need a flip countdown timer plugin with customizable buttons",
-        "Give me a chart ui library"
+        "Give me a chart ui library",
+        "Show me a library that does date picking in react",
+        "Can you find me a timer library?",
+        "Find me a library that can do regex",
+        "I was looking for a library that can keep my navbar fixed",
+        "I wanted to see if a there is a library for circle buttons",
+        "I want a library that can customize Radio Buttons",
+        "Can you get me a library that can control validation",
+        "Check for a library that can grid my page",
+        "I want to design a clean button, is there a library for that",
+        "Looking for a library in Java for animation",
+        "Is there a library for dynamic display in Javascript",
+        "I was searching for a state management library in Flutter"
       ],
       "responses": [
         ""
@@ -113,21 +125,15 @@
       "patterns": [
         "How popular is react?",
         "Is Python famous?",
-        "How many stars does Angular have?"
-      ],
-      "responses": [
-        ""
-      ],
-      "context": [
-        ""
-      ]
-    },
-    {
-      "tag": [
-        "lib_issues"
-      ],
-      "patterns": [
-        ""
+        "How many stars does Angular have?",
+        "Is numpy popular",
+        "How famous is Pandas",
+        "Famous library Keras",
+        "Scikit learn popularity",
+        "Popularity of react library",
+        "Ratings of JavaFX",
+        "How good is the library Pandas",
+        "I wanted to know how good Keras is"
       ],
       "responses": [
         ""
@@ -141,7 +147,9 @@
         "list_dep"
       ],
       "patterns": [
-        ""
+        "What are the dependencies of Ionic",
+        "Give me React dependencies",
+        "Show me Expressjs dependencies"
       ],
       "responses": [
         ""
@@ -155,7 +163,22 @@
         "lib_author"
       ],
       "patterns": [
-        ""
+        "Who wrote tensor flow?",
+        "Who's the author of react",
+        "Who was pandas written by",
+        "Author of react native",
+        "Node author",
+        "Who was expressjs created by",
+        "Who came up with ionic",
+        "Who is Django's writer",
+        "Writer of angular",
+        "I wanted to check who the writer of angular was",
+        "Who is the writer of React Native",
+        "Give me the author of Native Script",
+        "Show me the writer of express js",
+        "I was looking for the author of Node",
+        "Looking for the author of PHP",
+        "Looking for the author of Laravel"
       ],
       "responses": [
         ""
@@ -169,7 +192,13 @@
         "other_lib_by_author"
       ],
       "patterns": [
-        ""
+        "Are there other libraries by the author of react",
+        "Other libraries like opencv",
+        "I am looking for other libraries like react",
+        "Other libraries by the writer of angular",
+        "What else did the author of bootstrap write",
+        "What other libraries did the writer of native script have",
+        "Other libraries by the writer of Ionic"
       ],
       "responses": [
         ""
