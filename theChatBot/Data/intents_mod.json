@@ -77,23 +77,6 @@
       ]
     },
     {
-      "tag": "options",
-      "patterns": [
-        "How you could help me?",
-        "What you can do?",
-        "What help you provide?",
-        "How you can be helpful?",
-        "What support is offered"
-      ],
-      "responses": [
-        "I can provide you with a github library of your need",
-        "Give you an open source library that meets your needs"
-      ],
-      "context": [
-        ""
-      ]
-    },
-    {
       "tag": "lib_search",
       "patterns": [
         "I need a",
@@ -131,7 +114,12 @@
         "Popularity of react library",
         "Ratings of JavaFX",
         "How good is the library Pandas",
-        "I wanted to know how good Keras is"
+        "I wanted to know how good Keras is",
+        "Can you tell me how popular JavaFX is?",
+        "I wanted to check how famous bootstrap is",
+        "Tell me how good Django is",
+        "Can you give me the rating of Tensorflow?",
+        "Popularity of Scikit learn"
       ],
       "responses": [
         ""
