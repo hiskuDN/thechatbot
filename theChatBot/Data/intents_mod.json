@@ -96,20 +96,20 @@
     {
       "tag": "lib_search",
       "patterns": [
-        "I need a flip countdown timer plugin with customizable buttons",
-        "Give me a chart ui library",
-        "Show me a library that does date picking in react",
-        "Can you find me a timer library?",
-        "Find me a library that can do regex",
-        "I was looking for a library that can keep my navbar fixed",
-        "I wanted to see if a there is a library for circle buttons",
-        "I want a library that can customize Radio Buttons",
-        "Can you get me a library that can control validation",
-        "Check for a library that can grid my page",
-        "I want to design a clean button, is there a library for that",
-        "Looking for a library in Java for animation",
-        "Is there a library for dynamic display in Javascript",
-        "I was searching for a state management library in Flutter"
+        "I need a",
+        "Give me a",
+        "Show me a",
+        "Can you find me a",
+        "Find me a library that can",
+        "I was looking for a library that can",
+        "I wanted to see if a there is a library for",
+        "I want a library that can",
+        "Can you get me a library that can",
+        "Check for a library that can",
+        "I want to, is there a library for that",
+        "Looking for a library in",
+        "Is there a library for",
+        "I was searching for"
       ],
       "responses": [
         ""
@@ -119,9 +119,7 @@
       ]
     },
     {
-      "tag": [
-        "popularity"
-      ],
+      "tag": "popularity",
       "patterns": [
         "How popular is react?",
         "Is Python famous?",
@@ -143,9 +141,7 @@
       ]
     },
     {
-      "tag": [
-        "list_dep"
-      ],
+      "tag": "list_dep",
       "patterns": [
         "What are the dependencies of Ionic",
         "Give me React dependencies",
@@ -159,9 +155,7 @@
       ]
     },
     {
-      "tag": [
-        "lib_author"
-      ],
+      "tag": "lib_author",
       "patterns": [
         "Who wrote tensor flow?",
         "Who's the author of react",
@@ -188,9 +182,7 @@
       ]
     },
     {
-      "tag": [
-        "other_lib_by_author"
-      ],
+      "tag": "other_lib_by_author",
       "patterns": [
         "Are there other libraries by the author of react",
         "Other libraries like opencv",
