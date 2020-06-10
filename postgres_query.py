@@ -13,7 +13,7 @@ try:
 
     # Print PostgreSQL version
     #cursor.execute("SELECT version();")
-    cursor.execute("SELECT distinct name FROM projects_with_repository_fields WHERE name like '%tensorflow%'")
+    cursor.execute("SELECT distinct name FROM projects_with_repository_fields WHERE name like '%1vbvdk84ol%'")
     record = cursor.fetchone()
     #print("You are connected to - ", record,"\n")
     print(record)

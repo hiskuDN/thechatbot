@@ -30,7 +30,7 @@ if output_dir is not None:
     output_dir = Path(output_dir)
     print("Loading from", output_dir)
     nlp = spacy.load(output_dir)
-    doc = nlp("How often is hackernewsapi updated?")
+    doc = nlp("What about tensorflow?")
     doc2 = nlp("Can you tell me more about hackernewsapi?")
     doc3 = nlp("How many people use hackernewsapi?")
     doc4 = nlp("How popular is hackernewsapi?")
