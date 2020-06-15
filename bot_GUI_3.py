@@ -13,7 +13,6 @@ from random import randrange
 from pathlib import Path
 import gensim
 import psycopg2
-import threading, time
 
 # define directories
 path = './Data/'
@@ -27,7 +26,7 @@ chat_context = {
     "lang": "",
     "w2vInput":""
 }
-botThinkingStatus = 0 # 0 - not thinking, 1 - currently thinking, 2 - finished thinking but response has not been printed, 3 - finished
+waitResponses = ["Give me a second...", "Please wait while I find a good answer...", "Just a bit longer...", "Hang in there with me...", "I'm trying my best...", "Looking for an answer...", "Almost there..."]
 botReply = ""
 
 # load trained data
@@ -208,20 +207,7 @@ def process_query_response(user_intent, lib_name):
 
     return resp
 
-def wrapper(func, args, res):
-    res.append(func(*args))
-
-def process_libsearch_async(language, message):
-    res = []
-    t = threading.Thread(target=wrapper, args=(process_libsearch_response, (language, message), res))
-    t.start()
-    while t.is_alive():
-        print("HERE")
-        t.join(5)
-    return res[0]
-
 def process_libsearch_response(language, message):
-    global botThinkingStatus
     global botReply
     data_by_language = data_tokens[data_tokens['Lang'] == language]
     data_by_language = pd.DataFrame({'Description': list(data_by_language['Description']),
@@ -238,16 +224,13 @@ def process_libsearch_response(language, message):
     msg_tokens = clean_up_sentence(pd.Series(message))
     reply, score = match_repo_to_input(data_by_language, model, msg_tokens)
     botReply = reply
-    botThinkingStatus = 2
     return reply
 
 def generate_response(num):
     return randrange(num)
 
-
 def chatbot_response(msg):
     global chat_context
-    global botThinkingStatus
     global botReply
     botReply = ""
     # check intent
@@ -258,7 +241,6 @@ def chatbot_response(msg):
     if user_intent == 'greeting' or user_intent == 'goodbye' or user_intent == 'thanks' or user_intent == 'no_answer' \
         or user_intent == 'options':
         botReply = process_generic_response(user_intent)
-        botThinkingStatus = 2
 
     elif user_intent == 'popularity' or user_intent == 'lib_author':
         stop_words = stopwords.words("english")
@@ -275,7 +257,6 @@ def chatbot_response(msg):
 
         if libName == "" and chat_context["libName"] != "":
             botReply = process_query_response(user_intent, chat_context["libName"])
-        botThinkingStatus = 2
 
     elif user_intent == 'lib_search':
         f = open(entities_model_dir, 'rb')
@@ -283,34 +264,55 @@ def chatbot_response(msg):
         language = entities_model.predict([msg])
         if language:
             if language[0] == 'Python' or language[0] == 'JavaScript' or language[0] == 'Java' or language[0] == 'PHP' or language[0] == 'C++': 
-                res = []
-                botThinkingStatus = 1
-                t = threading.Thread(target=wrapper, args=(process_libsearch_response, (language[0], msg), res))
-                print("completed thinking1")
-                t.start()
-                print("completed thinking2")
-                #t.join()
-                print("completed thinking3")
-                #resp = res[0]
-                #resp =  process_libsearch_response(language[0], msg)
-                # resp = process_libsearch_async(language[0], msg)
+                botReply =  process_libsearch_response(language[0], msg)
             else:
                 botReply = 'Sorry, I can only help you with Python, JavaScript, Java, PHP or C++'
-                botThinkingStatus = 2
         else:
             botReply = 'Sorry I could not catch what you were saying. Can you rephrase?'
-            botThinkingStatus = 2
 
     else:
         botReply = 'Sorry I could not catch what you were saying. Can you rephrase?'
-        botThinkingStatus = 2
 
-    #return resp
+class MyThread(threading.Thread):
+    def __init__(self, msg, chat_log, send_button):
+        threading.Thread.__init__(self)
+        self.msg = msg
+        self.status = 0
+        self.chat_log = chat_log
+        self.send_button = send_button
+    
+    def run(self):
+        self.status = 1
+        print("Starting")
+        
+        chatbot_response(self.msg)
+        self.status = 2
+    
+    def wait_response(self):
+        global botReply
+        
+        print('here', self.status, botReply)
+
+        if self.status == 2:
+            self.chat_log.config(state=NORMAL)
+            self.chat_log.insert(END, "Bot: " + botReply + '\n\n')
+            self.chat_log.config(state=DISABLED)
+            self.chat_log.yview(END)
+            self.chat_log.update_idletasks()
+            
+            send_button["state"] = "normal"
+        else:
+            self.chat_log.config(state=NORMAL)
+            self.chat_log.insert(END, "Bot: " + waitResponses[generate_response(len(waitResponses))] + '\n\n')
+            self.chat_log.config(state=DISABLED)
+            self.chat_log.yview(END)
+            self.chat_log.after(5000, self.wait_response)
 
 # Creating GUI with tkinter
 def send(master):
-    global botThinkingStatus
     global botReply
+    global send_button
+    
     msg = entry_box.get("1.0", 'end-1c').strip()
     entry_box.delete("0.0", END)
 
@@ -320,78 +322,14 @@ def send(master):
         chat_log.config(foreground="#442265", font=("Verdana", 12))
         chat_log.config(state=DISABLED)
         chat_log.yview(END)
+        
+        send_button["state"] = "disabled"
+        
+        t = MyThread(msg, chat_log, send_button)
+        t.start()
 
-        botThinkingStatus = 0
-        testLoop(msg)
+        chat_log.after(2000, t.wait_response)
 
-        while botThinkingStatus != 3:
-            #testLoop(chat_log, msg)
-            chat_log.after(5000, testLoop(msg))
-
-
-def testLoop(msg):
-    global botThinkingStatus
-    global botReply
-    chat_log.config(state=NORMAL)
-
-    print("looped")
-    if botThinkingStatus == 0:
-        print("thinking0")
-        chatbot_response(msg)
-    elif botThinkingStatus == 2:
-        print("thinking2")
-        chat_log.insert(END, "Bot: " + botReply + '\n\n')
-        botThinkingStatus = 3
-    else:
-        print("thinking1")
-        # 1 - thinking
-        chat_log.insert(END, 'Bot: Please wait while I find something that you might like.\n\n')
-        #addResp("Please wait while I find something that you might like.")
-        #time.sleep(5)
-
-    chat_log.config(state=DISABLED)
-    chat_log.yview(END)
-    #chat_log.see(END)
-
-    chat_log.update_idletasks()
-    #chat_log.after(1000, self.updater)
-
-
-
-def addResp(res):
-    chat_log.insert(END, "Bot: " + res + '\n\n') 
-
-
-def check_if_running(thread, window):
-    if thread.is_alive():
-        window.after(1000, check_if_running, thread, window)
-    else:
-        window.destroy()
-
-
-def loading_ui():
-    # Loading UI
-    loading = Tk()
-    loading.title("Software Lookup Bot")
-    loading.geometry("400x500")
-    loading.resizable(width=FALSE, height=FALSE)
-
-    # loading label
-    label = Label(loading, text='Loading...')
-    label.config(font=('Courier', 30))
-    label.pack(side=TOP, ipady=100)
-
-    # run window
-    loading.mainloop()
- 
-"""
-def updater(self):
-    print("update self")
-    self.see(END)
-    self.update_idletasks()
-    self.after(1000, self.updater)
-"""
- 
 load_trained_data()
 print('loading ui')
 # UI Main
