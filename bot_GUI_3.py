@@ -145,6 +145,7 @@ def match_repo_to_input(data_by_language, model, msg_tokens):
             return reply, r_score
 
 def query_db(user_intent, query):
+    global chat_context
     resp = ""
     try:
         connection = psycopg2.connect(user = "postgres",
@@ -164,6 +165,7 @@ def query_db(user_intent, query):
             elif user_intent == 'lib_author':
                 baseAnswer = 'The author of library {} is {}'
                 resp = baseAnswer.format(record[0].split('/')[1], record[0].split('/')[0])
+            chat_context["libName"] = record[0]
         else:
             resp = "Sorry I could not find what you are looking for. Please make sure your input is correct."
 
@@ -251,7 +253,7 @@ def chatbot_response(msg):
         for ent in doc.ents:
             if ent.label_ == "libName" and ent.text not in stop_words:
                 libName = ent.text
-                chat_context["libName"] = ent.text
+                # chat_context["libName"] = ent.text
                 botReply = process_query_response(user_intent, ent.text)
                 break
 
